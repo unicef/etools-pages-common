@@ -1,4 +1,10 @@
-import CONSTANTS from '../../interventions/intervention-tab-pages/common/constants';
+const DOMAINS = {
+  STAGING: 'etools-staging.unicef.org',
+  DEV: 'etools-dev.unicef.org',
+  DEMO: 'etools-demo.unicef.org',
+  TEST: 'etools-test.unicef.io',
+  LOCAL: 'localhost:8082'
+};
 
 const getBasePath = () => {
   console.log(document.getElementsByTagName('base')[0].href);
@@ -17,16 +23,16 @@ export const ROOT_PATH = '/' + getBasePath().replace(window.location.origin, '')
 
 export const _checkEnvironment = () => {
   const location = window.location.href;
-  if (location.indexOf(CONSTANTS.DOMAINS.STAGING) > -1) {
+  if (location.indexOf(DOMAINS.STAGING) > -1) {
     return 'STAGING';
   }
-  if (location.indexOf(CONSTANTS.DOMAINS.DEMO) > -1) {
+  if (location.indexOf(DOMAINS.DEMO) > -1) {
     return 'DEMO';
   }
-  if (location.indexOf(CONSTANTS.DOMAINS.DEV) > -1) {
+  if (location.indexOf(DOMAINS.DEV) > -1) {
     return 'DEVELOPMENT';
   }
-  if (location.indexOf(CONSTANTS.DOMAINS.LOCAL) > -1) {
+  if (location.indexOf(DOMAINS.LOCAL) > -1) {
     return 'LOCAL';
   }
   return null;

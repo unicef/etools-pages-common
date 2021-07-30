@@ -1,5 +1,5 @@
 import {GenericObject} from '@unicef-polymer/etools-types/dist/global.types';
-import {customElement, html, LitElement, property} from 'lit-element';
+import {html, LitElement, property} from 'lit-element';
 import {fireEvent} from '../../../../utils/fire-custom-event';
 import {sendRequest} from '@unicef-polymer/etools-ajax';
 import {get as getTranslation} from 'lit-translate';

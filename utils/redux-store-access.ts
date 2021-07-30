@@ -1,11 +1,10 @@
-import {RootState} from '../../interventions/intervention-tab-pages/common/types/store.types';
 import {Store} from 'redux';
 
-let store: Store<RootState>;
-let storePromise: Promise<Store<RootState>> | null = null;
-let storeResolver: ((store: Store<RootState>) => void) | null = null;
+let store: Store<any>;
+let storePromise: Promise<Store<any>> | null = null;
+let storeResolver: ((store: Store<any>) => void) | null = null;
 
-export const setStore = (parentAppReduxStore: Store<RootState>) => {
+export const setStore = (parentAppReduxStore: Store<any>) => {
   store = parentAppReduxStore;
   if (storeResolver) {
     storeResolver(store);
