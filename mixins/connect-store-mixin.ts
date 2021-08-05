@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import {getStoreAsync} from '../../interventions/intervention-tab-pages/utils/redux-store-access';
 import {Store, Unsubscribe} from 'redux';
 import {Constructor} from '@unicef-polymer/etools-types';
-import {RootState} from '../../interventions/intervention-tab-pages/common/types/store.types';
+import {getStoreAsync} from '../utils/redux-store-access';
 
 interface CustomElement {
   connectedCallback?(): void;
@@ -16,7 +15,7 @@ export function connectStore<T extends Constructor<CustomElement>>(baseClass: T)
 
     constructor(...args: any[]) {
       super(...args);
-      getStoreAsync().then((store: Store<RootState>) => {
+      getStoreAsync().then((store: Store<any>) => {
         this._storeUnsubscribe = store.subscribe(() => this.stateChanged(store.getState()));
         this.stateChanged(store.getState());
       });
@@ -30,6 +29,6 @@ export function connectStore<T extends Constructor<CustomElement>>(baseClass: T)
       }
     }
 
-    stateChanged(_state: RootState) {}
+    stateChanged(_state: any) {}
   };
 }

@@ -1,11 +1,10 @@
 import {LitElement, property, html} from 'lit-element';
 import cloneDeep from 'lodash-es/cloneDeep';
-import {areEqual, filterByIds} from '../../interventions/intervention-tab-pages/utils/utils';
-import {fireEvent} from '../../interventions/intervention-tab-pages/utils/fire-custom-event';
-import {validateRequiredFields} from '../../interventions/intervention-tab-pages/utils/validation-helper';
-import {formatDate} from '../../interventions/intervention-tab-pages/utils/date-utils';
+import {areEqual, filterByIds} from '../utils/utils';
+import {fireEvent} from '../utils/fire-custom-event';
+import {validateRequiredFields} from '../utils/validation-helper';
+import {formatDate} from '../utils/date-utils';
 import isEmpty from 'lodash-es/isEmpty';
-import CONSTANTS from '../../interventions/intervention-tab-pages/common/constants';
 import ContentPanelMixin from './content-panel-mixin';
 import {AnyObject, Constructor, MinimalUser} from '@unicef-polymer/etools-types';
 import {translate} from 'lit-translate';
@@ -192,14 +191,6 @@ function ComponentBaseMixin<T extends Constructor<LitElement>>(baseClass: T) {
 
       this.data[key] = detail.value;
       this.requestUpdate();
-    }
-
-    getDocumentLongName(value: any): string | undefined {
-      if (!value) {
-        return;
-      }
-      // @ts-ignore
-      return CONSTANTS.DOCUMENT_TYPES_LONG[value.toUpperCase()];
     }
 
     /**

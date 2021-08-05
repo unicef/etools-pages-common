@@ -1,11 +1,11 @@
 import {LitElement, property} from 'lit-element';
 import {sendRequest} from '@unicef-polymer/etools-ajax/etools-ajax-request';
-import {fireEvent} from '../../interventions/intervention-tab-pages/utils/fire-custom-event';
-import {cloneDeep} from '../../interventions/intervention-tab-pages/utils/utils';
-import '../../interventions/intervention-tab-pages/common/layout/are-you-sure';
-import {openDialog} from '../../interventions/intervention-tab-pages/utils/dialog';
+import {cloneDeep} from '../utils/utils';
+import '../../etools-pages-common/layout/are-you-sure';
 import {AnyObject, Constructor} from '@unicef-polymer/etools-types';
 import {translate} from 'lit-translate';
+import {openDialog} from '../utils/dialog';
+import {fireEvent} from '../utils/fire-custom-event';
 
 function RepeatableDataSetsMixin<T extends Constructor<LitElement>>(baseClass: T) {
   class RepeatableDataSetsClass extends baseClass {

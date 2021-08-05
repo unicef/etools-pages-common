@@ -1,6 +1,7 @@
 import {LitElement, property} from 'lit-element';
-import CONSTANTS from '../../interventions/intervention-tab-pages/common/constants';
 import {Constructor} from '@unicef-polymer/etools-types';
+
+const DEFAULT_LIST_SIZE = 10;
 
 class Paginator {
   page = 1;
@@ -16,7 +17,9 @@ function PaginationMixin<T extends Constructor<LitElement>>(baseClass: T) {
 
     set pageSize(pageSize: number) {
       this.resetPageNumber();
-      this.paginator = Object.assign({}, this.paginator, {page_size: pageSize});
+      this.paginator = Object.assign({}, this.paginator, {
+        page_size: pageSize
+      });
     }
 
     pageSizeChanged(e: CustomEvent) {
@@ -29,7 +32,9 @@ function PaginationMixin<T extends Constructor<LitElement>>(baseClass: T) {
     }
 
     visibleRangeChanged(e: CustomEvent) {
-      this.paginator = Object.assign({}, this.paginator, {visible_range: e.detail.value});
+      this.paginator = Object.assign({}, this.paginator, {
+        visible_range: e.detail.value
+      });
     }
 
     getRequestPaginationParams() {
@@ -67,7 +72,7 @@ function PaginationMixin<T extends Constructor<LitElement>>(baseClass: T) {
 
     setPaginationDataFromUrlParams(urlParams: any) {
       this.setPageNumber(urlParams.page ? parseInt(urlParams.page) : 1);
-      this.setPageSize(urlParams.size ? parseInt(urlParams.size) : CONSTANTS.DEFAULT_LIST_SIZE);
+      this.setPageSize(urlParams.size ? parseInt(urlParams.size) : DEFAULT_LIST_SIZE);
     }
 
     _pageInsidePaginationRange(page: number, total: number | null) {

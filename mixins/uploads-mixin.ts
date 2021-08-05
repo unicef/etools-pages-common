@@ -1,14 +1,11 @@
 import {LitElement, property} from 'lit-element';
-import {getEndpoint} from '../../interventions/intervention-tab-pages/utils/endpoint-helper';
-import {interventionEndpoints} from '../../interventions/intervention-tab-pages/utils/intervention-endpoints';
 import {Constructor} from '@unicef-polymer/etools-types';
-import {getStore} from '../../interventions/intervention-tab-pages/utils/redux-store-access';
-import {
-  INCREASE_UNSAVED_UPLOADS,
-  DECREASE_UNSAVED_UPLOADS,
-  INCREASE_UPLOADS_IN_PROGRESS,
-  DECREASE_UPLOADS_IN_PROGRESS
-} from '../../interventions/intervention-tab-pages/common/actions/actionsContants';
+import {getStore} from '..//utils/redux-store-access';
+
+const INCREASE_UPLOADS_IN_PROGRESS = 'INCREASE_UPLOADS_IN_PROGRESS';
+const DECREASE_UPLOADS_IN_PROGRESS = 'DECREASE_UPLOADS_IN_PROGRESS';
+const INCREASE_UNSAVED_UPLOADS = 'INCREASE_UNSAVED_UPLOADS';
+const DECREASE_UNSAVED_UPLOADS = 'DECREASE_UNSAVED_UPLOADS';
 
 /**
  * @polymer
@@ -17,7 +14,7 @@ import {
 function UploadsMixin<T extends Constructor<LitElement>>(baseClass: T) {
   class UploadsClass extends baseClass {
     @property({type: String})
-    uploadEndpoint: string = getEndpoint(interventionEndpoints.attachmentsUpload).url;
+    uploadEndpoint!: string;
 
     @property({type: Number})
     uploadsInProgress!: number;
