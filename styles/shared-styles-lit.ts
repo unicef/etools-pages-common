@@ -1,4 +1,6 @@
-import {css, unsafeCSS} from 'lit-element';
+import {html} from 'lit-element';
+import {ReadonlyStyles} from './readonly-styles';
+import {RequiredFieldsStyles} from './required-fields-styles';
 // language=css
 export const sharedStylesContent = `
   :host {
@@ -62,40 +64,6 @@ export const sharedStylesContent = `
     }
   }
 
-  etools-dropdown[readonly],
-  etools-dropdown-multi[readonly],
-  datepicker-lite[readonly],
-  paper-input[readonly],
-  paper-textarea[readonly],
-  etools-currency-amount-input[readonly] {
-    --paper-input-container-underline: {
-      display: none;
-    }
-    --paper-input-container-input-focus: {
-      pointer-events: none;
-    }
-    --paper-input-container-label-focus: {
-      pointer-events: none;
-      color: var(--secondary-text-color);
-    }
-    --paper-input-container-underline-focus: {
-      display: none;
-    }
-    --paper-input-container: {
-      pointer-events: none;
-      cursor: text;
-    }
-    --paper-input-container-label: {
-      pointer-events: none;
-      color: var(--secondary-text-color, #737373);
-      cursor: text;
-    }
-    --esmm-select-cursor: text;
-    --esmm-external-wrapper: {
-      width: 100%;
-    }
-  }
-
   etools-dropdown,
   etools-dropdown-multi {
     --esmm-external-wrapper: {
@@ -118,36 +86,6 @@ export const sharedStylesContent = `
     --paper-input-container-label-floating: {
       color: var(--secondary-text-color, #737373);
     }
-  }
-
-  paper-input[required][label],
-  paper-textarea[required][label],
-  paper-input-container[required],
-  datepicker-lite[required],
-  etools-upload[required],
-  etools-currency-amount-input[required] {
-    --paper-input-container-label: {
-      @apply --required-star-style;
-      color: var(--secondary-text-color, #737373);
-    }
-    --paper-input-container-label-floating: {
-      @apply --required-star-style;
-      color: var(--secondary-text-color, #737373);
-    }
-  }
-
-  etools-dropdown-multi[required]::part(esmm-label),
-  etools-dropdown[required]::part(esmm-label) {
-    @apply --required-star-style;
-  }
-
-  label[required] {
-    @apply --required-star-style;
-    background: url('./images/required.svg') no-repeat 87% 40%/6px;
-  }
-
-  .readonly {
-    pointer-events: none;
   }
 
   .font-bold {
@@ -350,8 +288,11 @@ export const sharedStylesContent = `
   }
 `;
 // export const sharedStyles = html`${unsafeCSS(sharedStylesContent)}`;
-export const sharedStyles = css`
-  ${unsafeCSS(sharedStylesContent)}
+export const sharedStyles = html`
+  <style>
+    ${sharedStylesContent}
+  </style>
+  ${ReadonlyStyles} ${RequiredFieldsStyles}
 `;
 
 export const sharedStylesPolymer = () => {

@@ -2,8 +2,9 @@ import {html} from 'lit-element';
 import {sharedStyles} from './shared-styles-lit';
 
 export const InfoElementStyles = html`
+  ${sharedStyles}
   <style>
-    ${sharedStyles} :host {
+    :host {
       display: block;
       margin-bottom: 24px;
     }
