@@ -9,8 +9,9 @@ import {sharedStyles} from '../styles/shared-styles-lit';
 export class EtoolsFormElementWrapper extends LitElement {
   render() {
     return html`
+      ${sharedStyles}
       <style>
-        ${sharedStyles} :host {
+        :host {
           width: 100%;
 
           max-width: var(--etools-form-element-wrapper-max-width, none);

@@ -10,8 +10,9 @@ export class CancelJustification extends LitElement {
   render() {
     // language=HTML
     return html`
+      ${sharedStyles}
       <style>
-        ${sharedStyles} :host {
+        :host {
           display: block;
           margin-bottom: 24px;
         }
@@ -27,7 +28,7 @@ export class CancelJustification extends LitElement {
           font-size: 17px;
           white-space: pre-wrap;
           color: var(--primary-text-color);
-          padding: 26px 12px 26px  80px;
+          padding: 26px 12px 26px 80px;
         }
 
         div[slot='panel-btns'].bookmark {
