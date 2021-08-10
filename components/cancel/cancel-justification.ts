@@ -1,5 +1,6 @@
 import {LitElement, html, property} from 'lit-element';
 import {sharedStyles} from '../../styles/shared-styles-lit';
+import '@unicef-polymer/etools-content-panel/etools-content-panel';
 
 /**
  * @customElement
