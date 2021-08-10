@@ -16,6 +16,9 @@ export function connectStore<T extends Constructor<CustomElement>>(baseClass: T)
     constructor(...args: any[]) {
       super(...args);
       getStoreAsync().then((store: Store<any>) => {
+        if (this.getLazyReducers()) {
+          (store as any).addReducers(this.getLazyReducers());
+        }
         this._storeUnsubscribe = store.subscribe(() => this.stateChanged(store.getState()));
         this.stateChanged(store.getState());
       });
@@ -30,5 +33,8 @@ export function connectStore<T extends Constructor<CustomElement>>(baseClass: T)
     }
 
     stateChanged(_state: any) {}
+    getLazyReducers(): any {
+      return false;
+    }
   };
 }
