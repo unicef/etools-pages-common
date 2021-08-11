@@ -1,12 +1,14 @@
 import {LitElement, html, property} from 'lit-element';
 import {sharedStyles} from '../../styles/shared-styles-lit';
 import '@unicef-polymer/etools-content-panel/etools-content-panel';
+import {get as getTranslation} from 'lit-translate';
 
 /**
  * @customElement
  */
-export class CancelJustification extends LitElement {
+export class ReasonDisplay extends LitElement {
   @property() justification!: string;
+  @property() title = getTranslation('CANCELLATION_NOTE');
 
   render() {
     // language=HTML
@@ -51,7 +53,7 @@ export class CancelJustification extends LitElement {
           height: 60px !important;
         }
       </style>
-      <etools-content-panel class="cancellation-tab" panel-title="Cancellation Note">
+      <etools-content-panel class="cancellation-tab" .panelTitle="${this.title}">
         <div slot="panel-btns" class="bookmark">
           <iron-icon icon="bookmark"></iron-icon>
         </div>
@@ -62,4 +64,4 @@ export class CancelJustification extends LitElement {
   }
 }
 
-window.customElements.define('cancel-justification', CancelJustification);
+window.customElements.define('reason-display', ReasonDisplay);
